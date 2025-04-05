@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .task-bar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-bar-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .task-bar-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .task-bar-menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .task-bar-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .Feasty {
+            background-color: #e8def9;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            height: 45px;
+        }
+
+        h1 {
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            font-size: 42px;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px);
+            background-color: #e8def9;
+        }
+
+
+        .button-box {
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            width: 700px;
+            height: 100px;
+            background-color: #ffdad7;
+            border: none;
+            border-radius: 30px;
+        }
+
+        .interactive-button {
+            padding: 20px;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: none;
+            text-align: center;
+        }
+
+        #button1 {
+            background-color: #e6c1c0;
+        }
+
+        #button2 {
+            background-color: #e6c1c0;
+        }
+
+        #button3 {
+            background-color: #e6c1c0;
+        }
+
+        #button4 {
+            background-color: #e6c1c0;
+        }
+
+        .interactive-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .interactive-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+<div class="task-bar">
+    <div class="task-bar-title">My Application</div>
+    <div class="task-bar-menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Settings</a>
+        <a href="#">Help</a>
+    </div>
+</div>
+<div class="Feasty">
+    <h1>Feasty</h1>
+</div>
+
+<div class="container">
+
+
+    <div class="button-box">
+        <button id="button1" class="interactive-button"> Chat Box</button>
+        <button id="button2" class="interactive-button">Grocery Listing</button>
+        <button id="button3" class="interactive-button"> Cook Timing</button>
+        <button id="button4" class="interactive-button"> Easy Recipies</button>
+    </div>
+</div>
+
+
+<script defer src='../render.js'></script>
+</body>
+
+</html>

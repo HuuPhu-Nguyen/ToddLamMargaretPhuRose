@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feasty - Cooking Timer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .task-bar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .task-bar-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .task-bar-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .task-bar-menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .task-bar-menu a:hover {
+      text-decoration: underline;
+    }
+
+    .Feasty {
+      background-color: #ffdad7;
+      justify-content: center;
+      display: flex;
+    }
+
+    #cooking-timer {
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      font-size: 30px;
+      background-color: white;
+      border-radius: 8px;
+      width: 350px;
+      height: 75px;
+      border: none;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 50px);
+      background-color: #ffdad7;
+    }
+
+    button {
+      margin-top: 50px;
+      font-size: 30px;
+      background-color: white;
+      border-radius: 15px;
+      width: 350px;
+      height: 125px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .interactive-button {
+      padding: 20px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      height: 400px;
+      width: 400px;
+      border: none;
+      text-align: center;
+      background-color: #ffdad7;
+    }
+
+    #button1,
+    #button2,
+    #button3,
+    #button4 {
+      background-color: white;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Dropdown styles */
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 350px;
+      border-radius: 8px;
+      z-index: 1;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 22px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Show the dropdown menu when the button is clicked */
+    .dropdown-content.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="task-bar">
+    <div class="task-bar-title">Feasty</div>
+    <div class="task-bar-menu">
+      <a href="index.html">Home</a>
+      <a href="#" id="returnLink">Return</a>
+    </div>
+  </div>
+  <div class="Feasty">
+    <button id="cooking-timer">COOKING-TIMER</button>
+  </div>
+
+  <div class="container">
+    <div class="interactive-button">
+      <!-- EGGS dropdown -->
+      <div class="dropdown-container">
+        <button id="button1">EGGS</button>
+        <div class="dropdown-content" id="eggs-dropdown">
+          <a href="#">Soft Boiled</a>
+          <a href="#">Medium Boiled</a>
+          <a href="#">Hard Boiled</a>
+        </div>
+      </div>
+
+      <!-- STEAK dropdown -->
+      <div class="dropdown-container">
+        <button id="button2">STEAK</button>
+        <div class="dropdown-content" id="steak-dropdown">
+          <a href="#">Rare</a>
+          <a href="#">Medium Rare</a>
+          <a href="#">Medium</a>
+          <a href="#">Well Done</a>
+        </div>
+      </div>
+    </div>
+    <div class="interactive-button">
+      <!-- PASTA dropdown -->
+      <div class="dropdown-container">
+        <button id="button3">PASTA</button>
+        <div class="dropdown-content" id="pasta-dropdown">
+          <a href="#">Al Dente</a>
+          <a href="#">Regular</a>
+          <a href="#">Soft</a>
+        </div>
+      </div>
+
+      <!-- OTHERS dropdown -->
+      <div class="dropdown-container">
+        <button id="button4">OTHERS</button>
+        <div class="dropdown-content" id="others-dropdown">
+          <a href="#">Rice</a>
+          <a href="#">Vegetables</a>
+          <a href="#">Chicken</a>
+          <a href="#">Fish</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Store the current page in session storage
+    sessionStorage.setItem("currentPage", "boildeggs.html");
+
+    // Get all buttons and their dropdowns
+    const buttons = [
+      { button: document.getElementById("button1"), dropdown: document.getElementById("eggs-dropdown") },
+      { button: document.getElementById("button2"), dropdown: document.getElementById("steak-dropdown") },
+      { button: document.getElementById("button3"), dropdown: document.getElementById("pasta-dropdown") },
+      { button: document.getElementById("button4"), dropdown: document.getElementById("others-dropdown") }
+    ];
+
+    // Add click event listeners to each button
+    buttons.forEach(({ button, dropdown }) => {
+      button.addEventListener("click", function (event) {
+        // Close all other dropdowns first
+        buttons.forEach(item => {
+          if (item.dropdown !== dropdown && item.dropdown.classList.contains('show')) {item.dropdown.classList.remove('show');
+          }
+        });
+
+        // Toggle this dropdown
+        dropdown.classList.toggle("show");
+        event.stopPropagation();
+      });
+    });
+
+    // Close all dropdowns when clicking elsewhere
+    window.addEventListener("click", function () {
+      buttons.forEach(({ dropdown }) => {
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      });
+    });
+
+    // Add click handlers for all dropdown items
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Find which dropdown this item belongs to
+        let foodType = "";
+        if (this.closest("#eggs-dropdown")) foodType = "Eggs";
+        else if (this.closest("#steak-dropdown")) foodType = "Steak";
+        else if (this.closest("#pasta-dropdown")) foodType = "Pasta";
+        else foodType = "Other";
+
+        alert(foodType + ": " + this.textContent);
+
+        // Close the dropdown
+        this.closest(".dropdown-content").classList.remove("show");
+      });
+    });
+
+    // Add home button functionality to cooking-timer button
+    document.getElementById("cooking-timer").addEventListener("click", function () {
+      window.location.href = "index.html";
+    });
+
+    // Return button functionality
+    document.getElementById("returnLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "hackathon.html";
+    });
+  </script>
+</body>
+
+</html>

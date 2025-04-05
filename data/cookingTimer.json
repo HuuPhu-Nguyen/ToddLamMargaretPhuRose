@@ -1,0 +1,20 @@
+{
+  "presetTimers": {
+    "eggs": {
+      "softBoiled": 4,
+      "mediumBoiled": 8,
+      "hardBoiled": 12
+    },
+    "steak": {
+      "rare": 6,
+      "mediumRare": 8,
+      "medium": 10,
+      "wellDone": 12
+    },
+    "pasta": {
+      "alDente": 7,
+      "soft": 10
+    }
+  },
+  "timeUnit": "minutes"
+}

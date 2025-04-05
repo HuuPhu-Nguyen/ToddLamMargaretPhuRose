@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feasty - Recipes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .task-bar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .task-bar-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .task-bar-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .task-bar-menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .task-bar-menu a:hover {
+      text-decoration: underline;
+    }
+
+    .recipes {
+      background-color: #ffdad7;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 45px;
+      font-weight: bold;
+    }
+
+    .recipes h1 {
+      margin-top: 50px;
+      font-size: 42px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 50px);
+      background-color: #ffdad7;
+    }
+
+    button {
+      margin-top: 50px;
+      font-size: 25px;
+      background-color: white;
+      border-radius: 15px;
+      width: 350px;
+      height: 100px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .interactive-button {
+      padding: 0;
+      height: 800px;
+      width: 400px;
+      border: none;
+      text-align: center;
+      background-color: #ffdad7;
+    }
+
+    #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8 {
+      background-color: white;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="task-bar">
+    <div class="task-bar-title">Feasty</div>
+    <div class="task-bar-menu">
+      <a href="index.html">Home</a>
+      <a href="#" id="returnLink">Return</a>
+    </div>
+  </div>
+  
+  <div class="recipes">
+    <h1>Recipes</h1>
+  </div>
+
+  <div class="container">
+    <div class="interactive-button">
+      <button id="button1">Avocado Toast</button>
+      <button id="button2">Soft Scrambled Eggs</button>
+      <button id="button3">Yogurt Bowl</button>
+      <button id="button4">Fried Egg Breakfast Sandwich</button>
+      <button id="button5">Bagel Breakfast Sandwich</button>
+    </div>
+    
+    <div class="interactive-button">
+      <button id="button6">Banana Blueberry Smoothies</button>
+      <button id="button7">Cheesy Chicken Sausage Pasta Bake</button>
+      <button id="button8">Crispy Cheese Quesadill</button>
+      <button id="button9">Ground Chicken Tacos</button>
+      <button id="button10">Tomato Basil Gnocchi</button>
+    </div>
+  </div>
+</body>
+
+  <script>
+    sessionStorage.setItem("currentPage", "recipes.html");
+
+    document.getElementById("returnLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "homepage.html";
+    });
+  </script>
+</body>
+
+</html>

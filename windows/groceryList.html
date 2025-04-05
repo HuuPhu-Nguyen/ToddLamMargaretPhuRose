@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .task-bar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .task-bar-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .task-bar-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .task-bar-menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .task-bar-menu a:hover {
+      text-decoration: underline;
+    }
+
+    .grocery-list {
+      background-color: #ffdad7;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 45px;
+      font-weight: bold;
+    }
+
+    .grocery-list h1 {
+      margin-top: 50px;
+      font-size: 42px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 50px);
+      background-color: #ffdad7;
+    }
+
+    .the-list-items, .the-list-store {
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      height: 500px;
+      background-color: #ffffff;
+      border: none;
+      margin: 0 20px;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .the-list-items h2, .the-list-store h3 {
+      font-size: 36px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .the-list-items textarea, .the-list-store textarea {
+      background-color: #ffffff;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 0.5px solid;
+      border-radius: 30px;
+      width: 80%;
+      height: 80%;
+      text-align: center;
+      padding: 15px;
+      resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="task-bar">
+    <div class="task-bar-title">Feasty</div>
+    <div class="task-bar-menu">
+      <a href="index.html">Home</a>
+      <a href="#" id="returnLink">Return</a>
+    </div>
+  </div>
+  <div class="grocery-list">
+    <h1>Grocery List</h1>
+  </div>
+
+  <div class="container">
+
+    <div class="the-list-items">
+      <h2>Items</h2>
+      <textarea id="itemsInput" placeholder="Enter the items"></textarea>
+    </div>
+
+    <div class="the-list-store">
+      <h3>Store</h3>
+      <textarea id="storeInput" placeholder="Enter the store"></textarea>
+    </div>
+
+  </div>
+
+  <script>
+    sessionStorage.setItem("currentPage", "groceryList.html");
+
+    document.getElementById("returnLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "homepage.html";
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cooking Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5d6d3;
+        }
+
+        .timer-container {
+            text-align: center;
+            background-color: #f5d6d3;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .timer-circle {
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: white;
+            border: 8px solid #a63d2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .start-button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .start-button:active {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+<div class="timer-container">
+    <div class="timer-title">COOKING-TIMER</div>
+    <div id="timer" class="timer-circle">00:00</div>
+    <button class="start-button" onclick="startTimer()">START</button>
+</div>
+
+<script>
+    let countdown;
+    let time = 60;
+    let endTime;
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const secs = (seconds % 60).toString().padStart(2, '0');
+        return `${minutes}:${secs}`;
+    }
+
+    function updateTimerDisplay() {
+        document.getElementById('timer').textContent = formatTime(time);
+    }
+
+    function startTimer() {
+        clearInterval(countdown);
+
+
+        endTime = Date.now() + time * 1000;
+        updateTimerDisplay();
+
+        countdown = setInterval(() => {
+            const remaining = Math.round((endTime - Date.now()) / 1000);
+            if (remaining >= 0) {
+                time = remaining;
+                updateTimerDisplay();
+            } else {
+                clearInterval(countdown);
+                time = 0;
+                updateTimerDisplay();
+                alert("Time's up!");
+            }
+        }, 50);
+    }
+</script>
+</body>
+</html>
